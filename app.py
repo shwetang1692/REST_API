@@ -9,7 +9,7 @@ from resources.user import UserRegister
 from resources.item import Item, ItemList
 from resources.store import Store, StoreList
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'data.db') #data.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///' + os.path.join(basedir, 'data.db'))#data.db'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False #to overrule Flask-SQLAlchemy change teracking behaviour
 app.secret_key = 'sheldon'
 api = Api(app)
