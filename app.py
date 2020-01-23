@@ -13,10 +13,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'da
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False #to overrule Flask-SQLAlchemy change teracking behaviour
 app.secret_key = 'sheldon'
 api = Api(app)
-#'sqlite:///' + os.path.join(basedir, 'data.sqlite')
-@app.before_first_request
-def  create_tables():
-    db.create_all(),
+
 
 jwt = JWT(app, authenticate, identity) #JWT creates a new enpoint '/auth'
 
